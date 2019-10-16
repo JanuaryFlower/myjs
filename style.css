@@ -1,0 +1,27 @@
+body {
+	display: flex;
+	flex-direction: column;
+	margin: 0 0;
+	max-width: 1599px;
+}
+
+.container-map {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin: 10px auto 20px auto;
+}
+.container-map .map {
+	width: 600px;
+	height: 600px;
+}
+
+.tool-text {
+	min-width: 600px;
+
+}
+.tool-text .txt {
+	text-align: center;
+	font-weight: bold;
+	font-size: 30px;
+}
