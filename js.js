@@ -26,6 +26,9 @@ var getDistanceTool = function (distance) {
 		return "Антарктида! Сделано кликов - "+clicks; 
 	};
 };
+var rebootGame = function() {
+	location.reload();
+};
 // Создаем переменные
 var width = 600;
 var height = 600;
@@ -48,15 +51,18 @@ $("#map").click(function (event) {
 	$("#txt").text(distanceTool);
 	// Проигрыш
 	if (clicks === 20) {
-		alert('Осторожно у Вас осталось 20 кликов');
+		$("#txt").append('<br>' + 'Осторожно у Вас осталось 20 попыток');
 	} else if (clicks === 30) {
-		alert('Упс, если через 10 кликов клад не найдётся - Вы проиграете')
+		$("#txt").append('<br>' + 'Упс, если через 10 попыток клад не найдётся - Вы проиграете')
 	} else if (clicks === 40) {
-		alert('К сожалению Вы не справились, клад не найден. Перезагрузите страницу для того, чтобы попробовать снова!');
+		$('#txt').text('К сожалению Вы не справились, клад не найден.');
+		setInterval(rebootGame, 3000);
 	};
 	// Если клик был достаточно близко, поздравляем с победой
-	if (distance < 5) {
-		alert("Клад найден! Сделано кликов: " + clicks);
-		alert('Перезагрузите страницу для обновления игры!');
+	if (distance < 8) {
+		$("#txt").text('Клад найден, поздравляем');
+		$("#txt").append('<br>');
+		$("#txt").append('Кликов сделано: - ' + clicks);
+		setInterval(rebootGame, 3000);
 	};
 });
